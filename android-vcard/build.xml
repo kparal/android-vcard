@@ -71,4 +71,20 @@
     nbproject/build-impl.xml file. 
 
     -->
+
+    <target name="package" description="Create library distribution.">
+        <!-- clean -->
+        <antcall target="clean"/>
+        <!-- build -->
+        <antcall target="jar"/>
+        <!-- delete unneeded stuff -->
+        <delete file="dist/README.TXT"/>
+        <!-- build javadoc -->
+        <antcall target="-javadoc-build"/>
+        <!-- copy sources -->
+        <copy todir="dist/src">
+            <fileset dir="src"/>
+        </copy>
+    </target>
+
 </project>

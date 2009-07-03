@@ -32,4 +32,13 @@ All the sources should be compiled in the build/ directory. In the dist/
 directory the resulting android-vcard.jar should be created, together with all 
 needed libraries.
 
+Packaging library
+=================
+
+You can run command:
+
+ $ ant package
+ 
+to obtain library in a form of a distribution package in the dist/ directory.
+
 
