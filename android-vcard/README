@@ -1,0 +1,51 @@
+README for android-vcard
+========================
+
+Android-vcard is a Java library for manipulating vCard files. The source code 
+was extracted from the Google Android project.
+
+The project is licensed under Apache License 2.0.
+
+Program links:
+Android-vcard homepage. . . http://code.google.com/p/android-vcard/
+Source code . . . . . . . . http://code.google.com/p/android-vcard/source/checkout
+Google Android. . . . . . . http://source.android.com/
+
+Program files:
+README          - This file.
+lib/            - Program compilation and runtime libraries.
+nbproject/      - Project files for the NetBeans IDE.
+src/            - Program sources.
+test/           - Program test sources.
+
+Project root directory can be opened by NetBeans IDE as its project.
+
+
+Compile requirements
+====================
+
+ * Java 5 JDK
+ * Ant
+ * CopyLibs
+   o included in NetBeans IDE 6.7
+ * Apache Commons Codec 1.3
+   o http://commons.apache.org/codec/
+
+If you wish to use other libraries than the ones provided in lib/ directory
+(e.g. package maintainers may want this) you can specify classpaths to
+individual libraries in file lib/nblibraries.properties. Variables ending with
+'.classpath' will be of interest to you.
+
+
+Compiling library
+=================
+
+In sources root directory (where build.xml is located) run this command:
+
+ $ ant clean jar
+
+All the sources should be compiled in the build/ directory. In the dist/
+directory the resulting android-vcard.jar should be created, together with all 
+needed libraries.
+
+
