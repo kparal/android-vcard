@@ -21,22 +21,6 @@ test/           - Program test sources.
 Project root directory can be opened by NetBeans IDE as its project.
 
 
-Compile requirements
-====================
-
- * Java 5 JDK
- * Ant
- * CopyLibs
-   o included in NetBeans IDE 6.7
- * Apache Commons Codec 1.3
-   o http://commons.apache.org/codec/
-
-If you wish to use other libraries than the ones provided in lib/ directory
-(e.g. package maintainers may want this) you can specify classpaths to
-individual libraries in file lib/nblibraries.properties. Variables ending with
-'.classpath' will be of interest to you.
-
-
 Compiling library
 =================
 
