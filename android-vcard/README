@@ -12,7 +12,10 @@ Source code . . . . . . . . http://code.google.com/p/android-vcard/source/checko
 Google Android. . . . . . . http://source.android.com/
 
 Program files:
+ChangeLog       - Description of latest changes.
+license.txt     - Library license.
 README          - This file.
+examples/       - Usage examples.
 lib/            - Program compilation and runtime libraries.
 nbproject/      - Project files for the NetBeans IDE.
 src/            - Program sources.
