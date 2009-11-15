@@ -279,7 +279,9 @@ public class Contacts {
 //         * at least one E-mail or IM {@link ContactMethods} that match the
 //         * filter.
 //         *
-//         * @hide pending API council review
+//         * Not exposed because we expect significant changes in the contacts
+//         * schema and do not want to have to support this.
+//         * @hide
 //         */
 //        public static final Uri WITH_EMAIL_OR_IM_FILTER_URI =
 //            Uri.parse("content://contacts/people/with_email_or_im_filter");
@@ -338,6 +340,24 @@ public class Contacts {
 //        }
 //
 //        /**
+//         * @hide Used in vCard parser code.
+//         */
+//        public static long tryGetMyContactsGroupId(ContentResolver resolver) {
+//            Cursor groupsCursor = resolver.query(Groups.CONTENT_URI, GROUPS_PROJECTION,
+//                    Groups.SYSTEM_ID + "='" + Groups.GROUP_MY_CONTACTS + "'", null, null);
+//            if (groupsCursor != null) {
+//                try {
+//                    if (groupsCursor.moveToFirst()) {
+//                        return groupsCursor.getLong(0);
+//                    }
+//                } finally {
+//                    groupsCursor.close();
+//                }
+//            }
+//            return 0;
+//        }
+//
+//        /**
 //         * Adds a person to the My Contacts group.
 //         *
 //         * @param resolver the resolver to use
@@ -346,19 +366,7 @@ public class Contacts {
 //         * @throws IllegalStateException if the My Contacts group can't be found
 //         */
 //        public static Uri addToMyContactsGroup(ContentResolver resolver, long personId) {
-//            long groupId = 0;
-//            Cursor groupsCursor = resolver.query(Groups.CONTENT_URI, GROUPS_PROJECTION,
-//                    Groups.SYSTEM_ID + "='" + Groups.GROUP_MY_CONTACTS + "'", null, null);
-//            if (groupsCursor != null) {
-//                try {
-//                    if (groupsCursor.moveToFirst()) {
-//                        groupId = groupsCursor.getLong(0);
-//                    }
-//                } finally {
-//                    groupsCursor.close();
-//                }
-//            }
-//
+//            long groupId = tryGetMyContactsGroupId(resolver);
 //            if (groupId == 0) {
 //                throw new IllegalStateException("Failed to find the My Contacts group");
 //            }
@@ -867,6 +875,17 @@ public class Contacts {
         public static final int TYPE_OTHER = 3;
 
         /**
+         * @hide This is temporal. TYPE_MOBILE should be added to TYPE in the future.
+         */
+        public static final int MOBILE_EMAIL_TYPE_INDEX = 2;
+
+        /**
+         * @hide This is temporal. TYPE_MOBILE should be added to TYPE in the future.
+         * This is not "mobile" but "CELL" since vCard uses it for identifying mobile phone.
+         */
+        public static final String MOBILE_EMAIL_TYPE_NAME = "_AUTO_CELL";
+
+        /**
          * The user defined label for the the contact method.
          * <P>Type: TEXT</P>
          */
@@ -1003,7 +1022,13 @@ public class Contacts {
 //                        }
 //                    } else {
 //                        if (!TextUtils.isEmpty(label)) {
-//                            display = label;
+//                            if (label.toString().equals(MOBILE_EMAIL_TYPE_NAME)) {
+//                                display =
+//                                    context.getString(
+//                                            com.android.internal.R.string.mobileEmailTypeName);
+//                            } else {
+//                                display = label;
+//                            }
 //                        }
 //                    }
 //                    break;
@@ -1199,50 +1224,50 @@ public class Contacts {
 //        }
 //    }
 //
-//    /**
-//     * Columns from the Organizations table that other columns join into themselves.
-//     */
-//    public interface OrganizationColumns {
-//        /**
-//         * The type of the organizations.
-//         * <P>Type: INTEGER (one of the constants below)</P>
-//         */
-//        public static final String TYPE = "type";
-//
-//        public static final int TYPE_CUSTOM = 0;
-//        public static final int TYPE_WORK = 1;
-//        public static final int TYPE_OTHER = 2;
-//
-//        /**
-//         * The user provided label, only used if TYPE is TYPE_CUSTOM.
-//         * <P>Type: TEXT</P>
-//         */
-//        public static final String LABEL = "label";
-//
-//        /**
-//         * The name of the company for this organization.
-//         * <P>Type: TEXT</P>
-//         */
-//        public static final String COMPANY = "company";
-//
-//        /**
-//         * The title within this organization.
-//         * <P>Type: TEXT</P>
-//         */
-//        public static final String TITLE = "title";
-//
-//        /**
-//         * The person this organization is tied to.
-//         * <P>Type: TEXT</P>
-//         */
-//        public static final String PERSON_ID = "person";
-//
-//        /**
-//         * Whether this is the primary organization
-//         * <P>Type: INTEGER (if set, non-0 means true)</P>
-//         */
-//        public static final String ISPRIMARY = "isprimary";
-//    }
+    /**
+     * Columns from the Organizations table that other columns join into themselves.
+     */
+    public interface OrganizationColumns {
+        /**
+         * The type of the organizations.
+         * <P>Type: INTEGER (one of the constants below)</P>
+         */
+        public static final String TYPE = "type";
+
+        public static final int TYPE_CUSTOM = 0;
+        public static final int TYPE_WORK = 1;
+        public static final int TYPE_OTHER = 2;
+
+        /**
+         * The user provided label, only used if TYPE is TYPE_CUSTOM.
+         * <P>Type: TEXT</P>
+         */
+        public static final String LABEL = "label";
+
+        /**
+         * The name of the company for this organization.
+         * <P>Type: TEXT</P>
+         */
+        public static final String COMPANY = "company";
+
+        /**
+         * The title within this organization.
+         * <P>Type: TEXT</P>
+         */
+        public static final String TITLE = "title";
+
+        /**
+         * The person this organization is tied to.
+         * <P>Type: TEXT</P>
+         */
+        public static final String PERSON_ID = "person";
+
+        /**
+         * Whether this is the primary organization
+         * <P>Type: INTEGER (if set, non-0 means true)</P>
+         */
+        public static final String ISPRIMARY = "isprimary";
+    }
 //
 //    /**
 //     * A sub directory of a single person that contains all of their Phones.

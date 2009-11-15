@@ -19,7 +19,7 @@ package android.syncml.pim.vcard;
 import android.syncml.pim.VDataBuilder;
 //import android.syncml.pim.VParser;
 //import android.util.Config;
-//import android.util.Log;
+import android.util.Log;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
