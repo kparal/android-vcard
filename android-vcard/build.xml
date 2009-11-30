@@ -85,6 +85,9 @@
         <copy todir="dist/src">
             <fileset dir="src"/>
         </copy>
+        <copy todir="dist/examples">
+            <fileset dir="examples"/>
+        </copy>
         <!-- copy other files -->
         <copy todir="dist">
             <fileset file="ChangeLog"/>
