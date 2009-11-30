@@ -6,6 +6,7 @@
             <name>android-vcard</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <source-roots>
+                <root id="src.src2.dir"/>
                 <root id="src.dir"/>
                 <root id="src.examples.dir"/>
             </source-roots>
