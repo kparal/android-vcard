@@ -3,11 +3,11 @@
  * and open the template in the editor.
  */
 
-import android.syncml.pim.PropertyNode;
-import android.syncml.pim.VDataBuilder;
-import android.syncml.pim.VNode;
-import android.syncml.pim.vcard.VCardException;
-import android.syncml.pim.vcard.VCardParser;
+import a_vcard.android.syncml.pim.PropertyNode;
+import a_vcard.android.syncml.pim.VDataBuilder;
+import a_vcard.android.syncml.pim.VNode;
+import a_vcard.android.syncml.pim.vcard.VCardException;
+import a_vcard.android.syncml.pim.vcard.VCardParser;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;

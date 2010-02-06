@@ -16,13 +16,13 @@
 
 package com.android.unit_tests;
 
-import android.content.ContentValues;
-import android.syncml.pim.PropertyNode;
-import android.syncml.pim.VDataBuilder;
-import android.syncml.pim.VNode;
-import android.syncml.pim.vcard.VCardException;
-import android.syncml.pim.vcard.VCardParser_V21;
-import android.syncml.pim.vcard.VCardParser_V30;
+import a_vcard.android.content.ContentValues;
+import a_vcard.android.syncml.pim.PropertyNode;
+import a_vcard.android.syncml.pim.VDataBuilder;
+import a_vcard.android.syncml.pim.VNode;
+import a_vcard.android.syncml.pim.vcard.VCardException;
+import a_vcard.android.syncml.pim.vcard.VCardParser_V21;
+import a_vcard.android.syncml.pim.vcard.VCardParser_V30;
 //import android.test.AndroidTestCase;
 
 import java.io.IOException;

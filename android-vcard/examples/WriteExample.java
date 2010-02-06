@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-import android.provider.Contacts;
-import android.syncml.pim.vcard.ContactStruct;
-import android.syncml.pim.vcard.VCardComposer;
+import a_vcard.android.provider.Contacts;
+import a_vcard.android.syncml.pim.vcard.ContactStruct;
+import a_vcard.android.syncml.pim.vcard.VCardComposer;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
