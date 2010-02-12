@@ -91,6 +91,7 @@
         <!-- copy other files -->
         <copy todir="dist">
             <fileset file="ChangeLog"/>
+            <fileset file="license.txt"/>
         </copy>
     </target>
 
