@@ -1,6 +1,6 @@
 Android-vcard: Java vCard library
 
-version ?
+version 1.2 (2010-02-12)
     * moved project to a custom namespace (issue #2)
 
 version 1.1 (2009-11-30):
