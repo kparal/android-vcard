@@ -2,7 +2,7 @@ Android-vcard: Java vCard library
 
 version ??
     * patched to handle LANGUAGE codes properly - it crashed on vcards from 
-      MS Outlook (issue #3)
+      MS Outlook (issue #3, thanks csabhe)
 
 version 1.2 (2010-02-12)
     * moved project to a custom namespace (issue #2)
