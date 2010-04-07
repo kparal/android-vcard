@@ -607,8 +607,11 @@ public class VCardParser_V21 {
      * See also Section 7.1 of RFC 1521
      */
     protected void handleLanguage(String langval) throws VCardException {
-        String[] strArray = langval.split("-");
-        if (strArray.length != 2) {
+        //modified to handle LANGUAGE codes properly - it crashed on vcards
+        //from MS Outlook
+        //see http://code.google.com/p/android-vcard/issues/detail?id=3
+        final String[] strArray = langval.split("-");
+        if (strArray.length > 2) {
             throw new VCardException("Invalid Language: \"" + langval + "\"");
         }
         String tmp = strArray[0];
@@ -618,11 +621,14 @@ public class VCardParser_V21 {
                 throw new VCardException("Invalid Language: \"" + langval + "\"");
             }
         }
-        tmp = strArray[1];
-        length = tmp.length();
-        for (int i = 0; i < length; i++) {
-            if (!isLetter(tmp.charAt(i))) {
-                throw new VCardException("Invalid Language: \"" + langval + "\"");
+
+        if (strArray.length > 1) {
+            tmp = strArray[1];
+            length = tmp.length();
+            for (int i = 0; i < length; i++) {
+                if (!isLetter(tmp.charAt(i))) {
+                    throw new VCardException("Invalid Language: \"" + langval + "\"");
+                }
             }
         }
         if (mBuilder != null) {
