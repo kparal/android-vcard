@@ -1,4 +1,4 @@
-^android-vcard/build/
-^android-vcard/dist/
-^android-vcard/nbproject/private/
-^android-vcard/target/
+^build/
+^dist/
+^nbproject/private/
+^target/
