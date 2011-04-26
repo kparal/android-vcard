@@ -7,8 +7,25 @@
     <groupId>com.googlecode.android-vcard</groupId>
     <artifactId>android-vcard</artifactId>
     <version>1.3.99</version>
-
+    <packaging>jar</packaging>
+    
+    <name>Andoird vCard Library</name>
     <description>Java library for manipulating vCard files (from Android)</description>
+
+	<url>http://code.google.com/p/android-vcard/</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://android-vcard.googlecode.com/hg/</url>
+		<connection>scm:hg:https://android-vcard.googlecode.com/hg/</connection>
+	</scm>
 
     <dependencies>
         <dependency>
@@ -85,4 +102,17 @@
         </plugins>
     </build>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>sonatype-oss-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>sonatype-oss-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	
 </project>
