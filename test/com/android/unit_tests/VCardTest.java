@@ -806,4 +806,17 @@ public class VCardTest extends TestCase {
 		c.addContactmethod(Contacts.KIND_EMAIL, ContactMethodsColumns.TYPE_OTHER, "john@example.com", null, true);
 		composer.createVCard(c, VCardComposer.VERSION_VCARD30_INT);
     }
+    
+    /**
+     * Asserts that postal addresses that DON'T end in a line feed aren't
+     * rendered as "null" (bug existed at and before r37).
+     */
+    public void testFoldingStringInPostalAddress() throws VCardException {
+    	VCardComposer composer = new VCardComposer();
+		ContactStruct c = new ContactStruct();
+		c.name = "John Doe";
+		c.addContactmethod(Contacts.KIND_POSTAL, Contacts.ContactMethodsColumns.TYPE_HOME, "123 Some Street", null, true);
+		String actual = composer.createVCard(c, VCardComposer.VERSION_VCARD30_INT);
+		assertTrue(actual.contains("\nADR;TYPE=POSTAL:123 Some Street\n"));
+    }
 }

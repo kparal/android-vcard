@@ -164,8 +164,6 @@ public class VCardComposer {
             str = str.substring(0, str.length() - 2);
         } else if (str.endsWith("\n")) {
             str = str.substring(0, str.length() - 1);
-        } else {
-            return null;
         }
 
         str = str.replaceAll("\r\n", "\n");
