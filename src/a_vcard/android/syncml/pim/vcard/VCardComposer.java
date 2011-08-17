@@ -318,7 +318,7 @@ public class VCardComposer {
                     int methodType = new Integer(contactMethod.type).intValue();
                     if (emailTypeMap.containsKey(methodType)) {
                         mailType = emailTypeMap.get(methodType);
-                    } else if (emailTypes.contains(contactMethod.label
+                    } else if (!isNull(contactMethod.label) && emailTypes.contains(contactMethod.label
                             .toUpperCase())) {
                         mailType = contactMethod.label.toUpperCase();
                     }

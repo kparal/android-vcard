@@ -17,9 +17,13 @@
 package com.android.unit_tests;
 
 import a_vcard.android.content.ContentValues;
+import a_vcard.android.provider.Contacts;
+import a_vcard.android.provider.Contacts.ContactMethodsColumns;
 import a_vcard.android.syncml.pim.PropertyNode;
 import a_vcard.android.syncml.pim.VDataBuilder;
 import a_vcard.android.syncml.pim.VNode;
+import a_vcard.android.syncml.pim.vcard.ContactStruct;
+import a_vcard.android.syncml.pim.vcard.VCardComposer;
 import a_vcard.android.syncml.pim.vcard.VCardException;
 import a_vcard.android.syncml.pim.vcard.VCardParser_V21;
 import a_vcard.android.syncml.pim.vcard.VCardParser_V30;
@@ -777,5 +781,29 @@ public class VCardTest extends TestCase {
                 new PropertyNode("REV", "20081031T065854Z",
                         null, null, null, null, null));
         verifier.verify(builder.vNodeList.get(0));
+    }
+    
+    /**
+     * Asserts that the NullPointerException bug in VCardComposer.java (around
+     * line 321) that existed at and before r37 is fixed.
+     */
+    public void testEmailCustomType() throws VCardException {
+    	VCardComposer composer = new VCardComposer();
+		ContactStruct c = new ContactStruct();
+		c.name = "John Doe";
+		c.addContactmethod(Contacts.KIND_EMAIL, ContactMethodsColumns.TYPE_CUSTOM, "john@example.com", null, true);
+		composer.createVCard(c, VCardComposer.VERSION_VCARD30_INT);
+    }
+    
+    /**
+     * Asserts that the NullPointerException bug in VCardComposer.java (around
+     * line 321) that existed at and before r37 is fixed.
+     */
+    public void testEmailOtherType() throws VCardException {
+    	VCardComposer composer = new VCardComposer();
+		ContactStruct c = new ContactStruct();
+		c.name = "John Doe";
+		c.addContactmethod(Contacts.KIND_EMAIL, ContactMethodsColumns.TYPE_OTHER, "john@example.com", null, true);
+		composer.createVCard(c, VCardComposer.VERSION_VCARD30_INT);
     }
 }
