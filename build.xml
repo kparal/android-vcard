@@ -92,6 +92,7 @@
         <copy todir="dist">
             <fileset file="ChangeLog"/>
             <fileset file="license.txt"/>
+            <fileset file="pom.xml"/>
         </copy>
     </target>
 
