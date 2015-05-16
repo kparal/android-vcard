@@ -26,7 +26,7 @@ to do custom changes into this project when Google probably fixed all the bugs
 already in newer releases of the Android code base. However, I also lack the
 time and motivation to extract this library again from the latest Android source
 code (the current library code is taken from Android 1.0). If you have the
-motivation, please try it. If you contact me afterwards, I'll hapilly forward
+motivation, please try it. If you contact me afterwards, I'll happily forward
 visitors to your project.
 
 The project is licensed under Apache License 2.0.
