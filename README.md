@@ -6,6 +6,8 @@ was extracted from the Google Android 1.0 project.
 
 ---------------------------------------------------------------------
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 ### Android-vcard is not maintained aymore!
 
 **This project is unmaintained. There is no user support either, sorry.**
